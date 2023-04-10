@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { Config } from '../../Config';
-import preloader from "../../preloader.gif"
+
 
 function Login() {
 
@@ -68,7 +68,7 @@ function Login() {
              value={formik.values.password}
              onChange={formik.handleChange}
              onBlur={formik.handleBlur}/>
-            <button type='submit' className='Login-button'>{loader?preloader:"Login"}</button>
+            <button type='submit' className='Login-button'>{loader?"Loggin In":"Login"}</button>
     
           </form>
         </div>
