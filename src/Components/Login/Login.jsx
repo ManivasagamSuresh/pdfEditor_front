@@ -68,7 +68,7 @@ function Login() {
              value={formik.values.password}
              onChange={formik.handleChange}
              onBlur={formik.handleBlur}/>
-            <button type='submit' className='Login-button'>{loader?"Loggin In":"Login"}</button>
+            <button type='submit' className='Login-button'>{loader?"Signing In":"Login"}</button>
     
           </form>
         </div>
