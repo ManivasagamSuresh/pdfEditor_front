@@ -1,13 +1,15 @@
-import React from 'react'
+import React, { useState } from 'react'
 import "./Login.css"
 import { Link, useNavigate } from 'react-router-dom'
 import { useFormik } from 'formik';
 import axios from 'axios';
 import { Config } from '../../Config';
+import preloader from "../../preloader.gif"
 
 function Login() {
 
   const navigate = useNavigate();
+  const [loader,setLoader]=useState(false)
   const formik = useFormik({
     initialValues:{
       email:"",
@@ -26,10 +28,12 @@ function Login() {
     },
     onSubmit:async(values)=>{
       try {
+        setLoader(true)
         console.log(values);
         const user = await axios.post(`${Config.api}/login`,values);
         // console.log(user.data);
         // formik.resetForm();
+        setLoader(false);
         navigate("/pdfeditor");
       } catch (error) {
         console.log(error);
@@ -64,7 +68,7 @@ function Login() {
              value={formik.values.password}
              onChange={formik.handleChange}
              onBlur={formik.handleBlur}/>
-            <button type='submit' className='Login-button'>Login</button>
+            <button type='submit' className='Login-button'>{loader?preloader:"Login"}</button>
     
           </form>
         </div>
